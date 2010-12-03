@@ -8,11 +8,11 @@ Paste the url you want to make short (remember http://): {{ shorturlform.url }}
 <br>
 
 {% if usershorturls %}
-	<hr>
-  	<b><p>Your shortened URLs:</p></b>
-	{% for url in usershorturls %}
-		<p>{{ url.url }} is shortened with http://yoururlhere.com/{{ url.shorturl }} and has been visited {{ url.counter }} times. <a href='{% url globalshorturls.delete_shorturl url.id %}'>Delete</a></p>
-	{% endfor %}
+    <hr>
+    <b><p>Your shortened URLs:</p></b>
+    {% for url in usershorturls %}
+        <p>{{ url.url }} is shortened with http://yoururlhere.com/{{ url.shorturl }} and has been visited {{ url.counter }} times. <a href='{% url globalshorturls.delete_shorturl url.id %}'>Delete</a> - <a href="http://chart.apis.google.com/chart?chl='http://yoururlhere.com/{{ url.shorturl }}'&chs=300x300&cht=qr&choe=UTF-8">QR</a></p>
+    {% endfor %}
 {% endif %}
 
 {% endblock %}
