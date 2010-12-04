@@ -21,8 +21,8 @@ Patches are very welcome!
 
    url(r'^(?P<shorturl>[a-zA-Z0-9]+)/$', 'globalshorturls.views.redirect', name='globalshorturls.redirect')
 
-   line be the last one to be parsed (be on the bottom of your global urls.py) so that a visitor tries to match every other url-regex before
-   resorting to the redirect function.
+   line be the last one to be parsed (be on the bottom of your global urls.py) so that a visitor tries
+   to match every other url-regex before resorting to the redirect function.
 
 5. Sync your database
 
