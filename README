@@ -1,5 +1,4 @@
-django-globalshorturls
-======================
+== django-globalshorturls ==
 
 An app for the django framework that simplifies the task of shortening any URL to an URL of the form yourdomain.com/XYZ.
 It supports very basic stats (how many has visited the link), as well as a simple interface for adding new URLs.
@@ -9,3 +8,22 @@ If you only need to support shortening of local urls (to articles on your own si
 If you have any questions, feel free to contact me on my twitter http://twitter.com/martingamm.
 
 Patches are very welcome!
+
+== Usage ==
+
+1. Add SHORT_URL_PREFIX = 'http://yoururl.com/' to your settings file, substituting yoururl.com with the domain name you use for shortening.
+
+2. Add globalshorturls to your INSTALLED_APPS
+
+3. Move the globalshorturls and templates folder into your project folder.
+
+4. Set up urls.py the way you want it. It is probably a good idea to have the
+
+   url(r'^(?P<shorturl>[a-zA-Z0-9]+)/$', 'globalshorturls.views.redirect', name='globalshorturls.redirect')
+
+   line be the last one to be parsed (be on the bottom of your global urls.py) so that a visitor tries to match every other url-regex before
+   resorting to the redirect function.
+
+5. Sync your database
+
+6. Point your browser towards whatever url you gave the index function, and start shortening your urls!
