@@ -21,10 +21,8 @@ def index(request):
          shorturlform = ShorturlForm(request.POST)
          if shorturlform.is_valid():
             shorturl = Shorturl(url=shorturlform.cleaned_data['url'], creator = user)
-            #TODO look for a better way to create shorturl from id than saving twice
             shorturl.save()
-            shorturl.shorturl = base62.from_decimal(shorturl.id)
-            shorturl.save()
+
 
     shorturlform = ShorturlForm()
 
