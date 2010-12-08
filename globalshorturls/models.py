@@ -17,7 +17,7 @@ class Shorturl(models.Model):
     creator.compact_filter = True
 
     def full_shorturl(self):
-        return settings['SHORT_URL_PREFIX'] + shorturl
+        return settings.SHORT_URL_PREFIX + self.shorturl
 
     def __unicode__(self):
         return self.url

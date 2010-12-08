@@ -34,6 +34,8 @@ class CustomChoiceFilterSpec(ChoicesFilterSpec):
 
 FilterSpec.filter_specs.insert(0, (lambda f: getattr(f, 'compact_filter', False), CustomChoiceFilterSpec))
 
+# This form is identical to the ShorturlForm in models.py, but I keep them separate so that it is possible to change them
+# without interfering with the other
 class ShorturlAdminForm(ModelForm):
     class Meta:
         model = Shorturl
