@@ -9,18 +9,22 @@ from django.core.urlresolvers import reverse
 from globalshorturls.models import Shorturl, ShorturlForm
 from globalshorturls.baseconv import base62
 
-@login_required
 def index(request):
     '''
         View that gives you a prompt for shortening an URL, and shows the users shortened urls.
     '''
     user = request.user
-    user_shorturls = Shorturl.objects.filter(creator=user)
+    if isinstance(user, User):
+        user_shorturls = Shorturl.objects.filter(creator=user)
+    else:
+        user_shorturls = []
 
     if request.method == "POST":
          shorturlform = ShorturlForm(request.POST)
          if shorturlform.is_valid():
-            shorturl = Shorturl(url=shorturlform.cleaned_data['url'], creator = user)
+            shorturl = Shorturl(url=shorturlform.cleaned_data['url'])
+            if isinstance(user, User):
+                shorturl.creator = user
             shorturl.save()
 
 
